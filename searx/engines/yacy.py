@@ -52,8 +52,6 @@ Implementations
 # pylint: disable=fixme
 
 from __future__ import annotations
-
-import random
 from json import loads
 from urllib.parse import urlencode
 from dateutil import parser
@@ -61,6 +59,7 @@ from dateutil import parser
 from httpx import DigestAuth
 
 from searx.utils import html_to_text
+import secrets
 
 # about
 about = {
@@ -117,7 +116,7 @@ def _base_url() -> str:
 
     url = engines['yacy'].base_url  # type: ignore
     if isinstance(url, list):
-        url = random.choice(url)
+        url = secrets.choice(url)
     return url
 
 

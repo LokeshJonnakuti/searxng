@@ -5,7 +5,6 @@
 
 from datetime import datetime
 from urllib.parse import urlencode
-import random
 
 from lxml import html
 
@@ -15,6 +14,7 @@ from searx.utils import (
     eval_xpath_getindex,
     eval_xpath_list,
 )
+import secrets
 
 about = {
     "website": 'https://www.solidtorrents.to/',
@@ -34,7 +34,7 @@ base_url = 'https://solidtorrents.to'
 
 def request(query, params):
     if isinstance(base_url, list):
-        params['base_url'] = random.choice(base_url)
+        params['base_url'] = secrets.choice(base_url)
     else:
         params['base_url'] = base_url
     search_url = params['base_url'] + '/search?{query}'
