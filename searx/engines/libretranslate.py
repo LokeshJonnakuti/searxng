@@ -1,8 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 """LibreTranslate (Free and Open Source Machine Translation API)"""
-
-import random
 from json import dumps
+import secrets
 
 about = {
     "website": 'https://libretranslate.com',
@@ -21,7 +20,7 @@ api_key = ''
 
 
 def request(_query, params):
-    request_url = random.choice(base_url) if isinstance(base_url, list) else base_url
+    request_url = secrets.choice(base_url) if isinstance(base_url, list) else base_url
     params['url'] = f"{request_url}/translate"
 
     args = {'source': params['from_lang'][1], 'target': params['to_lang'][1], 'q': params['query']}
